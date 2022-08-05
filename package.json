@@ -1,6 +1,6 @@
 {
   "name": "@phryneas/ts-version",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "author": "Lenz Weber <mail@lenzw.de>",
   "license": "MIT",

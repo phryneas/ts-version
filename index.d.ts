@@ -28,15 +28,15 @@ export namespace TSVersion {
   type PossibleMajors = 3 | 4 | 5 | 6 | 7 | 8 | 9;
   type PossibleMinors = Digit;
 
-  export type Major = 3;
-  export type Minor = 0;
+  export type Major = 4;
+  export type Minor = 7;
 
   export type AtLeast<
     Major extends PossibleMajors,
     Minor extends PossibleMinors
-  > = DigitLT<TSVersion.Major, Major> extends true
+  > = DigitLT<Major, TSVersion.Major> extends true
     ? true
-    : DigitEQ<TSVersion.Major, Major> extends true
-    ? DigitLTE<TSVersion.Minor, Minor>
+    : DigitEQ<Major, TSVersion.Major> extends true
+    ? DigitLTE<Minor, TSVersion.Minor>
     : false;
 }

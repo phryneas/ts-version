@@ -14,9 +14,17 @@ import { TSVersion } from "./versioned/ts4_7";
   type Version = `${TSVersion.Major}.${TSVersion.Minor}`;
   expect<Version>("4.7");
 
-  expect<TSVersion.AtLeast<3, 9>>(false);
-  expect<TSVersion.AtLeast<4, 6>>(false);
+  expect<TSVersion.AtLeast<3, 9>>(true);
+  expect<TSVersion.AtLeast<4, 5>>(true);
+  expect<TSVersion.AtLeast<4, 6>>(true);
   expect<TSVersion.AtLeast<4, 7>>(true);
+  // @ts-expect-error
   expect<TSVersion.AtLeast<4, 8>>(true);
+  // @ts-expect-error
   expect<TSVersion.AtLeast<5, 0>>(true);
+
+  type VersionDependentType = TSVersion.AtLeast<3, 1> extends true
+    ? //    ^?
+      "we're in the future!"
+    : "it's the stone age!";
 }
