@@ -8,6 +8,7 @@ for major in 9 8 7 6 5 4 3; do
         mkdir -p "$folder"
         sed 's/export type Major.*$/export type Major = '$major'/;s/export type Minor.*$/export type Minor = '$minor'/' ./index.d.ts > "${folder}/index.d.ts"
         echo "  \">=${major}.${minor}\": { \"*\": [\"${folder}/*\"] },"
+        echo "  \">=${major}.${minor}.0-anypre\": { \"*\": [\"${folder}/*\"] },"
     done
 done
 
